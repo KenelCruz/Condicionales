@@ -1,6 +1,12 @@
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: '<li> {{todo.id+1}} - {{todo.text}} </li>'
+Vue.component('template', {
+    props: ['texto'],
+    template: 
+    `
+    <div>
+  <h1>Este es el componente que paso</h1>
+  <h1>{{texto}}</h1>
+    </div>
+    `
 })
 
 
