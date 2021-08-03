@@ -3,6 +3,7 @@ Vue.component('todo-item', {
     template: '<li> {{todo.id+1}} - {{todo.text}} </li>'
 })
 
+
 var instance = {
     el: '#app',
     data: {
