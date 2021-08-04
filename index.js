@@ -1,41 +1,48 @@
-Vue.component('template', {
-    props: ['texto'],
-    template: 
-    `
+Vue.component("showtemplate", {
+    props: ["templatenumber", "conditional", "bootstrap", "colortext"],
+    template: `
     <div>
-  <h1>Este es el componente que paso</h1>
-  <h1>{{texto}}</h1>
+    <template>
+    <div :class="bootstrap" style="max-width: 18rem;">
+        <div class="card-header">Template {{templatenumber}}</div>
+        <div :class="colortext">
+            <h5 class="card-title">Bienvenido al template {{templatenumber}}</h5>
+            <p class="card-text">Ejecucuion del {{conditional}}</p>
+        </div>
+        </div>
+    </template>
     </div>
-    `
-})
-
+    `,
+});
+Vue.component("error", {
+    props: ["errortittle", "errormessage", "conditional"],
+    template: `
+    <div>
+    <div class="card border-danger mb-3" style="max-width: 18rem;">
+    <div class="card-header">{{errortittle}}</div>
+    <div class="card-body text-danger">
+        <h5 class="card-title">{{errormessage}}</h5>
+        <p class="card-text">Ejecucion del {{conditional}}</p>
+    </div>
+</div>
+    </div>
+    `,
+});
 
 var instance = {
-    el: '#app',
+    el: "#app",
     data: {
-        message: 'Hello Vue!',
-        datos: "",
+        datos: 0,
         display: true,
-        spanTitle: 'Titulo del span',
-        seen: true,
-        todos: [
-            { text: 'Learn JavaScript' },
-            { text: 'Learn Vue' },
-            { text: 'Build something awesome' }
-        ],
-        
     },
     methods: {
-        reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('')
+        displaychanges: function () {
+            if (this.display == true) {
+                this.display = false;
+            } else {
+                this.display = true;
+            }
         },
-        displaychanges: function(){
-        if(this.display == true){
-            this.display = false
-        }else{
-            this.display = true
-        }
-        }
-    }
+    },
 };
 var app = new Vue(instance);
